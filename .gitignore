@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Env files — NEVER commit real secrets
+.env
+.env.*
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+
+# Alembic auto-generated migration scripts (keep only manually reviewed ones)
+# Comment out the next line if you want to track migrations in git (recommended)
+# backend/alembic/versions/
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.cache/
+frontend/.vercel/
+.pnpm-store/
+
+# Sessions — contain LinkedIn auth cookies, must never be committed
+/tmp/jobbird_sessions/
+sessions/
+*.session
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Docker volumes / local data
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

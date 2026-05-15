@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: jobbird-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: AI_SCORE_KEEP_THRESHOLD
+        value: "60"
+      - key: SCRAPER_MIN_DELAY_S
+        value: "2.0"
+      - key: SCRAPER_MAX_DELAY_S
+        value: "7.0"
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: DEBUG
+        value: "false"
+      - key: SECRET_KEY
+        generateValue: true
+    healthCheckPath: /api/health
+    autoDeploy: false

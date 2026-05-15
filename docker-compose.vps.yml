@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  worker:
+    image: ${WORKER_IMAGE:-ghcr.io/your-github-username/jobbird/jobbird-worker:latest}
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - sessions_data:/tmp/jobbird_sessions
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - redis_local
+
+  redis_local:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+volumes:
+  sessions_data:
+  redis_data:
