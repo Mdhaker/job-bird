@@ -23,9 +23,9 @@ class Settings(BaseSettings):
     CELERY_BROKER_URL: str = ""
     CELERY_RESULT_BACKEND: str = ""
 
-    # OpenAI
-    OPENAI_API_KEY: Optional[str] = None
-    OPENAI_MODEL: str = "gpt-4o-mini"
+    # Groq (free LLM inference)
+    GROQ_API_KEY: Optional[str] = None
+    GROQ_MODEL: str = "llama-3.3-70b-versatile"
 
     # Encryption key for storing LinkedIn credentials
     ENCRYPTION_KEY: str  # Fernet key — generate with: python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"

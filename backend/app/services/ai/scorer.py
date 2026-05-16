@@ -3,7 +3,7 @@ import logging
 from dataclasses import dataclass
 from typing import Optional
 
-from openai import AsyncOpenAI
+from groq import AsyncGroq
 
 from app.core.config import get_settings
 
@@ -59,9 +59,9 @@ class ScoreResult:
 
 class AIScorer:
     def __init__(self):
-        if not settings.OPENAI_API_KEY:
-            raise RuntimeError("OPENAI_API_KEY is not configured")
-        self._client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
+        if not settings.GROQ_API_KEY:
+            raise RuntimeError("GROQ_API_KEY is not configured")
+        self._client = AsyncGroq(api_key=settings.GROQ_API_KEY)
 
     async def score_job(
         self,
@@ -97,11 +97,11 @@ class AIScorer:
 
         try:
             response = await self._client.chat.completions.create(
-                model=settings.OPENAI_MODEL,
+                model=settings.GROQ_MODEL,
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.2,
                 max_tokens=600,
-                response_format={"type": "json_object"},
+                response_format={"type": "json_object"},  # supported on llama-3.3-70b-versatile
             )
             raw = response.choices[0].message.content
             data = json.loads(raw)

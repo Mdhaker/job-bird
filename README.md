@@ -93,7 +93,7 @@ Go to your repo → **Settings → Secrets and variables → Actions → New rep
 | `DATABASE_URL` | Supabase → Connection URI (asyncpg scheme) |
 | `REDIS_URL` | Upstash → Redis URL |
 | `ENCRYPTION_KEY` | Generate: `python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"` |
-| `OPENAI_API_KEY` | https://platform.openai.com/api-keys |
+| `GROQ_API_KEY` | https://console.groq.com → API Keys |
 | `SECRET_KEY` | Any random string (32+ chars) |
 | `RENDER_DEPLOY_HOOK_URL` | Render → Service → Settings → Deploy Hook |
 | `VPS_HOST` | Your VPS IP address |
