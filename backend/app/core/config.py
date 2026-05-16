@@ -8,7 +8,7 @@ class Settings(BaseSettings):
 
     # App
     APP_NAME: str = "JobBird"
-    APP_VERSION: str = "0.1.0"
+    APP_VERSION: str = "0.1.0" 
     DEBUG: bool = False
     SECRET_KEY: str = "change-me-in-production"
     ALLOWED_ORIGINS: list[str] = ["http://localhost:5173", "https://jobbird.vercel.app"]
