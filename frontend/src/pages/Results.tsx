@@ -144,18 +144,18 @@ export default function Results() {
                     )}
 
                     {/* Strengths / Gaps */}
-                    {(post.ai_strengths.length > 0 || post.ai_gaps.length > 0) && (
+                    {((post.ai_strengths?.length || 0) > 0 || (post.ai_gaps?.length || 0) > 0) && (
                       <div className="flex gap-4 mt-2 flex-wrap">
-                        {post.ai_strengths.length > 0 && (
+                        {(post.ai_strengths?.length || 0) > 0 && (
                           <div className="text-xs">
                             <span className="text-green-600 font-medium">✓ </span>
-                            {post.ai_strengths.slice(0, 2).join(" · ")}
+                            {post.ai_strengths?.slice(0, 2).join(" · ")}
                           </div>
                         )}
-                        {post.ai_gaps.length > 0 && (
+                        {(post.ai_gaps?.length || 0) > 0 && (
                           <div className="text-xs">
                             <span className="text-yellow-600 font-medium">△ </span>
-                            {post.ai_gaps.slice(0, 2).join(" · ")}
+                            {post.ai_gaps?.slice(0, 2).join(" · ")}
                           </div>
                         )}
                       </div>
